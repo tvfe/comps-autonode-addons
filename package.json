@@ -1,0 +1,30 @@
+{
+  "name": "comps-autonode-addons",
+  "version": "1.0.0",
+  "description": "Addons for autonode using comps",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/switer/comps-autonode-addons.git"
+  },
+  "keywords": [
+    "comps",
+    "autonode",
+    "addon"
+  ],
+  "author": "switer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/switer/comps-autonode-addons/issues"
+  },
+  "homepage": "https://github.com/switer/comps-autonode-addons#readme",
+  "dependencies": {
+    "mocha": "^2.4.5"
+  }
+}
