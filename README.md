@@ -31,3 +31,7 @@ compsAutonodeAddons(comps)
 * **{% component $id="xxx" with="value" /%}**
 
     Convert to `with(value) {}` syntax.
+    
+* **{% include $path="./xxx" with="value" /%}**
+
+    Convert to `with(value) {}` syntax.
