@@ -26,5 +26,8 @@
   "homepage": "https://github.com/switer/comps-autonode-addons#readme",
   "devDependencies": {
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "comps": "^2.2.1"
   }
 }
