@@ -1,6 +1,6 @@
 {
   "name": "comps-autonode-addons",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Addons for autonode using comps",
   "main": "index.js",
   "directories": {
