@@ -20,11 +20,11 @@ compsAutonodeAddons(comps)
 
 ## Syntax
 
-* **{% foreach $arr="items" $as="item" /%}**
+* **{% foreach $arr="items" $as="item" $index="i"/%}**
 
     Convert to `items.map()` syntax.
     
-* **{% foreach $obj="items" $as="item" /%}**
+* **{% foreach $obj="items" $as="item" $key="k" $index="i"/%}**
 
     Convert to `Object.keys(items).map()` syntax.
 
