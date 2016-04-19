@@ -61,14 +61,20 @@ module.exports = function (comps) {
 					}).join('') + '`'
 			}
 		}).aspect('component', {
+			beforeCreated: saveWith,
 			render: wrapByWith
 		}).aspect('include', {
+			beforeCreated: saveWith,
 			render: wrapByWith
 		})
 }
 
+function saveWith() {
+	this._with = this.$attributes.with
+	delete this.$attributes.with
+}
 function wrapByWith(innerHTML) {
-	var useWith = this.$attributes.with
+	var useWith = this._with
 	if (useWith) {
 		return '${function($value){with($value){return `' + innerHTML + '`}}(' + useWith + ')}'
 	} else {

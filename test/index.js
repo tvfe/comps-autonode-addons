@@ -30,6 +30,6 @@ describe('Parse', function () {
         var result = comps({
             template: '{% component $id="header" with="value"/%}'
         })
-        assert.equal(result, '${function($value){with($value){return `<header with="value"></header>`}}(value)}')
+        assert.equal(result, '${function($value){with($value){return `<header></header>`}}(value)}')
     })
 })
