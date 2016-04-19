@@ -1,6 +1,6 @@
 {
   "name": "comps-autonode-addons",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Addons for autonode using comps",
   "main": "index.js",
   "directories": {
@@ -26,5 +26,8 @@
   "homepage": "https://github.com/switer/comps-autonode-addons#readme",
   "devDependencies": {
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "comps": "^2.2.1"
   }
 }

@@ -16,9 +16,15 @@ describe('Parse', function () {
     })
     it('# foreach', function() {
         var result = comps({
-            template: '{% foreach $items="items" $as="v" %}<li></li>{%/foreach%}'
+            template: '{% foreach $arr="items" $as="v" %}<li></li>{%/foreach%}'
         })
-        assert.equal(result, "${items.map(function (v) {return `<li></li>`}).join('')}")
+        assert.equal(result, "${items.map(function (v,$index) {return `<li></li>`}).join('')}")
+    })
+    it('# foreach obj', function() {
+        var result = comps({
+            template: '{% foreach $obj="items" $as="v" %}<li></li>{%/foreach%}'
+        })
+        assert.equal(result, "${Object.keys(items).map(function($key,$index) {var v=items[$key];return `<li></li>`}).join('')}")
     })
     it('# component using with', function() {
         var result = comps({
