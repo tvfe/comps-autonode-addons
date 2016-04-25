@@ -1,10 +1,10 @@
 {
   "name": "comps-autonode-addons",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Addons for autonode using comps",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "mocha test"
   },
   "scripts": {
     "test": "mocha test/index"
