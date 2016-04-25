@@ -20,17 +20,25 @@ compsAutonodeAddons(comps)
 
 ## Syntax
 
-* **{% foreach $arr="items" $as="item" $index="i"/%}**
+* **{% foreach $arr="items" $as="item" $index="i"%} {% /foreach %}**
 
     Convert to `items.map()` syntax.
     
-* **{% foreach $obj="items" $as="item" $key="k" $index="i"/%}**
+* **{% foreach $obj="items" $as="item" $key="k" $index="i"%} {% /foreach %}**
 
     Convert to `Object.keys(items).map()` syntax.
 
-* **{% if $is="condition" /%}**
+* **{% if $is="condition" %} {% /if %}**
 
-    Convert to `condition ? innerHTML : ''` syntax.
+    Convert to `if (is) {return ''}` syntax.
+    
+* **{% if $is="condition" %} {% else /%} {% /if %}**
+
+    Convert to `if (is) {return ''} else {return ''}` syntax.
+    
+* **{% if $is="condition" %} {% else $is="condition" /%} {% else /%} {% /if %}**
+
+    Convert to `if (is) {return ''} else if (is) {return ''} else {return ''}` syntax.
 
 * **{% component $id="xxx" with="value" /%}**
 

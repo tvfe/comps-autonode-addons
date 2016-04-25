@@ -50,8 +50,8 @@ module.exports = function (comps) {
 			},
 			outer: function () {
 				return [
-					'${(%s) ? ('.replace('%s', this._condition),
-					'):""}'
+					'${(function(){if(%s){return '.replace('%s', this._condition),
+					'}})()||""}'
 				]
 			},
 			inner: function () {
@@ -59,6 +59,20 @@ module.exports = function (comps) {
 				return '`' + this.$el.childNodes.map(function (n) {
 						return ctx.$walk(n, ctx.$scope)
 					}).join('') + '`'
+			}
+		}).tag('else', {
+			created: function () {
+				this._condition = this.$attributes.$is || this.$attributes.$if
+			},
+			outer: function () {
+			    return ['', '']
+			},
+			inner: function () {
+				if (this._condition) {
+					return '`}else if(%s){return `'.replace('%s', this._condition);
+				} else {
+					return '`}else{return `'
+				}
 			}
 		}).aspect('component', {
 			render: wrapByWith

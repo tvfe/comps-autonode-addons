@@ -4,7 +4,7 @@
   "description": "Addons for autonode using comps",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "mocha test"
   },
   "scripts": {
     "test": "mocha test/index"

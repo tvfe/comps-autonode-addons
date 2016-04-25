@@ -2,6 +2,7 @@
 
 var assert = require('assert')
 var comps = require('comps')
+var vm = require("vm");
 require('../index')(comps)
 
 comps.componentLoader(function (name) {
@@ -12,7 +13,25 @@ describe('Parse', function () {
         var result = comps({
             template: '{% if $is="true" %}abc{%/if%}'
         })
-        assert.equal(result, '${(true) ? (`abc`):""}')
+        assert.equal(result, '${(function(){if(true){return `abc`}})()||""}')
+        assert.equal(vm.runInNewContext('`' + result + '`', {}), 'abc')
+    })
+    it('# else', function () {
+        var result = comps({
+            template: '{% else /%}'
+        })
+        assert.equal(result, '`}else{return `')
+
+        result = comps({
+            template: '{% else $if="true"/%}'
+        })
+        assert.equal(result, '`}else if(true){return `')
+
+        result = comps({
+            template: '{%if $is="false"%}abc{% else $if="true"/%}def{%/if%}'
+        })
+        assert.equal(result, '${(function(){if(false){return `abc`}else if(true){return `def`}})()||""}')
+        assert.equal(vm.runInNewContext('`' + result + '`', {}), 'def')
     })
     it('# foreach', function() {
         var result = comps({
