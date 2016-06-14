@@ -55,6 +55,6 @@ describe('Parse', function () {
         var result = comps({
             template: '{%scope name="comps" plugin="autonode" %}<li>${abc}</li>{%/scope%}'
         })
-        assert.equal(result, '${(function (name,plugin) {`<li>${abc}</li>`})(comps,autonode)')
+        assert.equal(result, '${(function (name,plugin) {return `<li>${abc}</li>`})(comps,autonode)||""}')
     })
 })
