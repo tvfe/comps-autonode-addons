@@ -82,7 +82,7 @@ module.exports = function (comps) {
 				var attKeys = Object.keys(attrs)
 			    return [
 			    	'${(function (%s) {'.replace('%s', attKeys.join(',')), 
-			    	'})(%s)'.replace('%s', attKeys.map(function (k) {
+			    	'})(%s)}'.replace('%s', attKeys.map(function (k) {
 			    		return attrs[k] || 'undefined'
 			    	}).join(','))]
 			},
