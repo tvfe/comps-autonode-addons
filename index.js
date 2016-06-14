@@ -74,6 +74,24 @@ module.exports = function (comps) {
 					return '`}else{return `'
 				}
 			}
+		}).tag('scope', {
+			created: function () {
+			},
+			outer: function () {
+				var attrs = this.$attributes
+				var attKeys = Object.keys(attrs)
+			    return [
+			    	'${(function (%s) {'.replace('%s', attKeys.join(',')), 
+			    	'})(%s)'.replace('%s', attKeys.map(function (k) {
+			    		return attrs[k] || 'undefined'
+			    	}).join(','))]
+			},
+			inner: function () {
+				var ctx = this
+				return '`' + this.$el.childNodes.map(function (n) {
+					return ctx.$walk(n, ctx.$scope)
+				}).join('') + '`'
+			}
 		}).aspect('component', {
 			beforeCreated: saveWith,
 			render: wrapByWith

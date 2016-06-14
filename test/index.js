@@ -51,4 +51,10 @@ describe('Parse', function () {
         })
         assert.equal(result, '${function($value){with($value){return `<header></header>`}}(value)}')
     })
+    it('# scope', function() {
+        var result = comps({
+            template: '{%scope name="comps" plugin="autonode" %}<li>${abc}</li>{%/scope%}'
+        })
+        assert.equal(result, '${(function (name,plugin) {`<li>${abc}</li>`})(comps,autonode)')
+    })
 })
