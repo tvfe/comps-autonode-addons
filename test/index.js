@@ -57,4 +57,16 @@ describe('Parse', function () {
         })
         assert.equal(result, '${(function (name,plugin) {return `<li>${abc}</li>`})(comps,autonode)||""}')
     })
+    it('# /(comment)', function () {
+        var result = comps({
+            template: '<div>{%/ 这是注释 /%}</div>'
+        })
+        assert.equal(result, '<div></div>')
+    })
+    it('# function', function () {
+        var result = comps({
+            template: '{%function param=123 %}return param{%/function%}'
+        })
+        assert.equal(result, '${(function (param) {return param})(123)||""}')
+    })
 })
