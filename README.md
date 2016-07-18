@@ -48,7 +48,24 @@ compsAutonodeAddons(comps)
 
     Convert to `with(value) {}` syntax.
 
-
 * **{% scope var1="expression" var2="expression" /%} {% /scope %}**
+
     Declare variables in that scope.
+
+* **{% function var1="expression" var2="expression" /%} {% /function %}**
+
+    Create a function scope with specified variables.
+
+    ```html
+    {% function isActive="curid === id" /%}
+        if (isActive) {
+            return `<div item="active"></div>`
+        } else return `<div></div>`
+    {% /function %}
+    ```
+
+* **{%/ this is comment... /%}**
+    
+    Comment syntax for comps.
+
 
