@@ -67,5 +67,3 @@ compsAutonodeAddons(comps)
 * **{%/ this is comment... /%}**
     
     Comment syntax for comps.
-
-
