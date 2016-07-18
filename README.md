@@ -48,7 +48,10 @@ compsAutonodeAddons(comps)
 
     Convert to `with(value) {}` syntax.
 
-
 * **{% scope var1="expression" var2="expression" /%} {% /scope %}**
     Declare variables in that scope.
 
+* **{%/ this is comment /%}**
+
+* **{%function param=123 %}return param{%/function%}**
+    Function
