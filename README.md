@@ -36,7 +36,7 @@ compsAutonodeAddons(comps)
 
     Convert to `if (is) {return ''} else {return ''}` syntax.
     
-* **{% if $is="condition" %} {% else $is="condition" /%} {% else /%} {% /if %}**
+* **{% if $is="condition" %} {% else $if="condition"%} {% else /%} {% /if %}**
 
     Convert to `if (is) {return ''} else if (is) {return ''} else {return ''}` syntax.
 
@@ -48,11 +48,11 @@ compsAutonodeAddons(comps)
 
     Convert to `with(value) {}` syntax.
 
-* **{% scope var1="expression" var2="expression" /%} {% /scope %}**
+* **{% scope var1="expression" var2="expression" %} {% /scope %}**
 
     Declare variables in that scope.
 
-* **{% function var1="expression" var2="expression" /%} {% /function %}**
+* **{% function var1="expression" var2="expression" %} {% /function %}**
 
     Create a function scope with specified variables.
 
