@@ -37,7 +37,7 @@ describe('Parse', function () {
         var result = comps({
             template: '{% foreach $arr="items" $as="v" %}<li></li>{%/foreach%}'
         })
-        assert.equal(result, "${(items instanceof Array ? items : []).map(function (v,$index) {return `<li></li>`}).join('')}")
+        assert.equal(result, "${(items.length ? items : []).map(function (v,$index) {return `<li></li>`}).join('')}")
     })
     it('# foreach obj', function() {
         var result = comps({

@@ -28,7 +28,7 @@ module.exports = function (comps) {
 
 				} else {
 					return [
-						"${(%s instanceof Array ? %s : []).map(function (%s,%s) {"
+						"${(%s.length ? %s : []).map(function (%s,%s) {"
 							.replace('%s', this._iterableName)
 							.replace('%s', this._iterableName)
 							.replace('%s', this._itemName || '$value')
