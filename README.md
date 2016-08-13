@@ -36,7 +36,7 @@ compsAutonodeAddons(comps)
 
     Convert to `if (is) {return ''} else {return ''}` syntax.
     
-* **{% if $is="condition" %} {% else $if="condition"%} {% else /%} {% /if %}**
+* **{% if $is="condition" %} {% else $if="condition" /%} {% else /%} {% /if %}**
 
     Convert to `if (is) {return ''} else if (is) {return ''} else {return ''}` syntax.
 
