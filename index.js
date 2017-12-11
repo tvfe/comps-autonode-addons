@@ -1,4 +1,5 @@
 'use strict'
+const htmlMinify = require('html-minifier').minify
 
 module.exports = function (comps) {
 	comps
@@ -39,9 +40,9 @@ module.exports = function (comps) {
 			},
 			inner: function () {
 				var ctx = this
-				return 'return `' + this.$el.childNodes.map(function (n) {
+				return 'return `' + minify(this.$el.childNodes.map(function (n) {
 						return ctx.$walk(n, ctx.$scope)
-					}).join('') + '`'
+					}).join('')) + '`'
 			}
 		}).tag('if', {
 			paired: true,
@@ -57,9 +58,9 @@ module.exports = function (comps) {
 			},
 			inner: function () {
 				var ctx = this
-				return '`' + this.$el.childNodes.map(function (n) {
+				return '`' + minify(this.$el.childNodes.map(function (n) {
 						return ctx.$walk(n, ctx.$scope)
-					}).join('') + '`'
+					}).join('')) + '`'
 			}
 		}).tag('else', {
 			paired: false,
@@ -90,9 +91,9 @@ module.exports = function (comps) {
 			},
 			inner: function () {
 				var ctx = this
-				return '`' + this.$el.childNodes.map(function (n) {
+				return '`' + minify(this.$el.childNodes.map(function (n) {
 					return ctx.$walk(n, ctx.$scope)
-				}).join('') + '`'
+				}).join('')) + '`'
 			}
 		}).tag('/', {
 			// comment
@@ -119,7 +120,7 @@ module.exports = function (comps) {
 				var ctx = this
 				return this.$el.childNodes.map(function (n) {
 					return ctx.$walk(n, ctx.$scope)
-				}).join('')
+				}).join('').trim();
 			}
 		}).aspect('component', {
 			beforeCreated: saveWith,
@@ -141,4 +142,18 @@ function wrapByWith(innerHTML) {
 	} else {
 		return innerHTML
 	}
+}
+
+function minify(str) {
+	if (str.indexOf('<') != -1 || str.indexOf('\n') != -1) {
+		try {
+			str = htmlMinify(str, {
+				collapseWhitespace: true,
+				removeComments: true,
+				minifyJS: true,
+				minifyCSS: true
+			})
+		} catch(e) {}
+	}
+	return str;
 }
